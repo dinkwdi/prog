@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Продажи</title>
+    <style>
+        .sale {
+            border: 1px solid black;
+            background-color: #F4E8D3;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            padding: 1%;
+        }
+        .button {
+            background-color: #67BA80;
+        }
+    </style>
+</head>
+<body>
+    <h1>Лист продаж</h1>
+    <form action="{% url 'sale-create' %}">
+        <button type="submit" class="button">добвить продажу</button>
+    </form>
+    {% for sale in sales %}
+    <div class="sale">
+        <p>{{ sale.name_product }} | {{ sale.name_partner}}</p>
+        <p>{{ sale.quantity }}</p>
+        <p>{{ sale.min_price }}</p>
+        <p>{{ sale.date_sale }}</p>
+    </div>
+    {% endfor %}
+</body>
+</html>

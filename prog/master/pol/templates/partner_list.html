@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Партнеры</title>
+    <style>
+        .partner {
+            border: 1px solid black;
+            background-color: #F4E8D3 ;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            padding: 1%;
+        }
+        .button {
+            background-color: #67BA80;
+        }
+    </style>
+</head>
+<body>
+    <h1><img src="/image.png">Лист партнеров</h1>
+    <form action="{% url 'create' %}">
+        <button type="submit" class="button">добавить партнера</button>
+    </form>
+    <form action="{% url 'sale' %}">
+        <button type="submit" class="button">посмореть продажи</button>
+    </form>
+        {% for partner in partners %}
+        <div class="partner">
+        <p>{{ partner.partner_type}} | {{ partner.partner_name }}</p>
+        <p>{{ partner.director }}</p>
+        <p>+7 {{ partner.phone}}</p>
+        <p>Рейтинг: {{ partner.rating }}</p>
+        <form action="{% url 'update' partner.pk %}">
+            <button type="submit" class="button">редактировать</button>
+        </form>
+        </div>
+        {% endfor %}
+</body>
+</html>
